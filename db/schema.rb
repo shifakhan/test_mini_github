@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_07_042205) do
+ActiveRecord::Schema.define(version: 2021_04_07_131519) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2021_04_07_042205) do
     t.string "provider"
     t.string "uid"
     t.string "name"
+    t.string "github_auth_token"
+    t.string "github_username"
   end
 
 end

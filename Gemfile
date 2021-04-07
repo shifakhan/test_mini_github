@@ -54,3 +54,4 @@ gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 gem 'omniauth-rails_csrf_protection'
 
 gem "haml", "~> 5.2"
+gem "httparty", "~> 0.18.1"

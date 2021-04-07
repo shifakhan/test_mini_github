@@ -37,5 +37,8 @@ module TestMiniGithub
 
     # React rails Typescript Support
     config.react.server_renderer_extensions = ["jsx", "js", "tsx", "ts"]
+
+    # Load Lib files
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end
