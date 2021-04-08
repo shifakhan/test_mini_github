@@ -1,16 +1,28 @@
 import * as React from "react";
+import { NavBar } from "../components/NavBar/NavBar";
+import { Login } from "../components/Login";
 
-type Props = {
+export type UserProps = {
   logged_in: boolean;
   username?: string;
   name?: string;
 };
 
-const App = ({logged_in, username, name}: Props) => {
+const App = (props: UserProps) => {
   return (
-    <div>
-      <h1>Mini Github</h1>
-    </div>
+    <React.Fragment>
+      <NavBar
+        logged_in={props.logged_in}
+        name={props.name}
+      />
+      { props.logged_in ?
+        <div>
+          Logged in
+        </div>
+        :
+        <Login />
+      }
+    </React.Fragment>
   );
 };
 
