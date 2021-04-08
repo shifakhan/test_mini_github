@@ -2,14 +2,14 @@ import * as React from "react";
 import { UserProps } from "../../App";
 
 import AppBar from "@material-ui/core/Grid";
-import Link from '@material-ui/core/Link';
-import IconButton from '@material-ui/core/IconButton';
-import Toolbar from '@material-ui/core/Toolbar';
-import HomeIcon from '@material-ui/icons/Home';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import Typography from '@material-ui/core/Typography';
+import Link from "@material-ui/core/Link";
+import IconButton from "@material-ui/core/IconButton";
+import Toolbar from "@material-ui/core/Toolbar";
+import HomeIcon from "@material-ui/icons/Home";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
+import Typography from "@material-ui/core/Typography";
 
 export const NavBar = ({ logged_in, name }: UserProps) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -25,13 +25,15 @@ export const NavBar = ({ logged_in, name }: UserProps) => {
 
   return <AppBar position="static" className="navbar">
     <Toolbar>
-      <Link href="/">
-        <IconButton edge="start" color="inherit" aria-label="menu">
-          <HomeIcon />
-        </IconButton>
-      </Link>
-      <Typography variant="h6" className="title">
-        Mini Github
+      {logged_in && (
+        <Link href="/">
+          <IconButton edge="start" color="inherit" aria-label="menu">
+            <HomeIcon />
+          </IconButton>
+        </Link>
+      )}
+      <Typography variant="h5" className="title">
+        MiniGithub
       </Typography>
       {logged_in && (
         <div>
@@ -48,13 +50,13 @@ export const NavBar = ({ logged_in, name }: UserProps) => {
             id="menu-appbar"
             anchorEl={anchorEl}
             anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
+              vertical: "top",
+              horizontal: "right",
             }}
             keepMounted
             transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
+              vertical: "top",
+              horizontal: "right",
             }}
             open={open}
             onClose={handleClose}
