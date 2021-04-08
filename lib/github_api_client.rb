@@ -10,11 +10,19 @@ class GithubApiClient
   end
 
   def user_repos(page, per_page)
-    request("user/repos", { page: page, per_page: per_page })
+    pagination_params = { page: page, per_page: per_page }
+    format_response(
+      request("user/repos", pagination_params),
+      pagination_params
+    )
   end
 
   def repo_issues(page, per_page, repo)
-    request("repos/#{@username}/#{repo}/issues", { page: page, per_page: per_page })
+    pagination_params = { page: page, per_page: per_page }
+    format_response(
+      request("repos/#{@username}/#{repo}/issues", pagination_params),
+      pagination_params
+    )
   end
 
   private
@@ -29,5 +37,12 @@ class GithubApiClient
       query: query_params,
       timeout: TIMEOUT
     ).parsed_response
+  end
+
+  def format_response(data, pagination_params = {})
+    pagination_params.merge(
+      success: true,
+      data: data
+    )
   end
 end
